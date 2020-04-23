@@ -50,4 +50,13 @@ public class RandomUtil {
 		}
 		return sb.toString();
 	}
+	//方法3-2：返回个0-9。 (8分)
+			public static String randomNumber (int length){
+				String str ="1234567890";
+				String result="";
+				for(int i=0;i<length;i++) {
+					result+=str.charAt(random(0, str.length()-1));
+				}
+				return result ;
+			}
 }

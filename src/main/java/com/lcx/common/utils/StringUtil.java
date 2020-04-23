@@ -1,6 +1,7 @@
 package com.lcx.common.utils;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.util.Random;
 
 /**
@@ -64,4 +65,67 @@ public class StringUtil {
 		
 		return name1 +name2 ;
 	}
+	
+
+	/**
+	 * 
+	 * @Title: isEmail 
+	 * @Description: //判断是否是邮箱格式
+	 * @param src
+	 * @return
+	 * @return: boolean
+	 */
+	public static boolean isEmail(String src) {
+		//定义规则
+		String reg="^\\w+\\@\\w+\\.\\w+$";
+		return src.matches(reg);
+	}
+	/**
+	 * 
+	 * @Title: isPhoneNumber 
+	 * @Description: 是否手机号
+	 * @param src
+	 * @return
+	 * @return: boolean
+	 */
+	public static boolean isPhone(String src) {
+		String reg = "^1(3|4|5|7|8)\\d{9}$";
+		
+		
+		return src.matches(reg);
+		
+	}
+	/**
+	 * 
+	 * @Title: isNumber 
+	 * @Description: 是否是数字类型  包含 正负数，小数
+	 * @param src
+	 * @return
+	 * @return: boolean
+	 */
+	public static boolean isNumber(String src) {
+		//定义规则
+		String reg="^(-)?[0-9]+(\\.[0-9]+)?$";
+		return src.matches(reg);
+	}
+	
+	
+	
+	/**
+	 * 功能说明：实现判断传入的字符串是否为包含http的url地址
+	 */
+	public static boolean isHttpUrl(String src){
+		
+		try {
+			URL url = new URL(src);
+			url.openStream();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+		//TODO 实现判断传入的字符串是否为以http打头的url地址
+	}
+	
 }
